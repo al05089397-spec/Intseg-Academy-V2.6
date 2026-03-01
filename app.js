@@ -31,9 +31,8 @@ function navigate(name) {
     return;
   }
 
-  // Mostrar shell y sidebar
+  // Mostrar shell (sidebar se maneja por CSS media query)
   document.getElementById("appShell").classList.remove("hidden");
-  document.getElementById("sidebar").classList.remove("hidden");
   document.getElementById("viewLogin").classList.add("hidden");
 
   // Mostrar la vista correcta
