@@ -47,10 +47,11 @@ function navigate(name) {
     backBtn = document.createElement("button");
     backBtn.id = "globalBack";
     backBtn.textContent = "← Atrás";
-    backBtn.style.cssText = "position:fixed;top:12px;left:12px;z-index:9999;background:#003d6b;color:#fff;border:none;padding:6px 14px;border-radius:20px;font-size:13px;font-weight:bold;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.3);";
-    backBtn.onclick = () => navigate(_prevView || "catalog");
+    backBtn.style.cssText = "position:fixed;top:12px;left:12px;z-index:9999;
+    background:#003d6b;color:#fff;border:none;padding:6px 14px;border-radius:20px;font-size:13px;font-weight:bold;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.3);";
     document.body.appendChild(backBtn);
   }
+  backBtn.onclick = () => navigate(_prevView || "catalog");
   backBtn.style.display = (name === "catalog" || name === "admin") ? "none" : "block";
 
   window.scrollTo(0, 0);
@@ -91,7 +92,7 @@ function doLogin() {
     badge = document.createElement("div");
     badge.id = "sessionBadge";
     badge.style.cssText = `
-      position:fixed; bottom:70px; right:16px; z-index:9999;
+      position:fixed; top:12px; right:16px; z-index:9999;
       background:${color}; color:#fff; font-size:13px; font-weight:bold;
       padding:6px 14px; border-radius:20px; box-shadow:0 2px 8px rgba(0,0,0,0.3);
     `;
