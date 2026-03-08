@@ -19,6 +19,7 @@ const VIEWS = ["viewLogin","viewCatalog","viewDetail","viewAdmin"];
 
 // ── Navegación ────────────────────────────────────────────
 function navigate(name) {
+  const _prevView = name === "detail" ? "catalog" : (name === "catalog" ? "admin" : null);
   document.getElementById("viewLogin").classList.add("hidden");
   document.getElementById("appShell").classList.add("hidden");
   document.getElementById("viewCatalog").classList.add("hidden");
@@ -47,7 +48,7 @@ function navigate(name) {
     backBtn.id = "globalBack";
     backBtn.textContent = "← Atrás";
     backBtn.style.cssText = "position:fixed;top:12px;left:12px;z-index:9999;background:#003d6b;color:#fff;border:none;padding:6px 14px;border-radius:20px;font-size:13px;font-weight:bold;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.3);";
-    backBtn.onclick = () => history.back();
+    backBtn.onclick = () => navigate(_prevView || "catalog");
     document.body.appendChild(backBtn);
   }
   backBtn.style.display = (name === "catalog" || name === "admin") ? "none" : "block";
