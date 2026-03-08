@@ -58,6 +58,9 @@ function toast(msg) {
 }
 
 // ── Login ─────────────────────────────────────────────────
+// REEMPLAZAR SOLO la función doLogin() en app.js
+// Busca "function doLogin()" y reemplaza todo el bloque hasta el cierre }
+
 function doLogin() {
   const u = document.getElementById("inputUser").value.trim();
   const p = document.getElementById("inputPass").value.trim();
@@ -68,9 +71,30 @@ function doLogin() {
     setTimeout(()=>err.classList.add("hidden"), 3000);
     return;
   }
+
+  // Inyectar badge de rol visible en el panel
+  const roleLabels = { admin:"👤 Administrador", maestro:"🎓 Instructor", guardia:"🛡️ Guardia" };
+  const roleColors = { admin:"#003d6b", maestro:"#2e7d32", guardia:"#ff8c00" };
+  const label = roleLabels[found.role] || found.role;
+  const color = roleColors[found.role] || "#333";
+
+  // Crear o actualizar badge de sesión
+  let badge = document.getElementById("sessionBadge");
+  if (!badge) {
+    badge = document.createElement("div");
+    badge.id = "sessionBadge";
+    badge.style.cssText = `
+      position:fixed; top:12px; right:16px; z-index:9999;
+      background:${color}; color:#fff; font-size:13px; font-weight:bold;
+      padding:6px 14px; border-radius:20px; box-shadow:0 2px 8px rgba(0,0,0,0.3);
+    `;
+    document.body.appendChild(badge);
+  }
+  badge.style.background = color;
+  badge.textContent = `${found.user}  |  ${label}`;
+
   navigate(found.role==="admin"||found.role==="maestro" ? "admin" : "catalog");
 }
-
 // ── Logout ─────────────────────────────────────────────────
 function doLogout() {
   document.getElementById("inputUser").value = "";
