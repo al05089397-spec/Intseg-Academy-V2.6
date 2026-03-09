@@ -50,7 +50,12 @@ function doLogin() {
   }
   const roleLabels = { admin:"Administrador", maestro:"Instructor", guardia:"Guardia" };
   const welcomeEl = document.getElementById("adminWelcome");
-  if (welcomeEl) welcomeEl.textContent = "Bienvenido, " + found.user + " - " + (roleLabels[found.role] || found.role);
+  if (welcomeEl) welcomeEl.textContent = "Bienvenido, " + (roleLabels[found.role] || found.role);
+  const badgeEl = document.getElementById("roleBadge");
+  if (badgeEl) {
+    badgeEl.textContent = roleLabels[found.role] || found.role;
+    badgeEl.style.cssText = "display:inline-block;padding:3px 12px;border-radius:20px;font-size:12px;font-weight:bold;background:#003d6b;color:#fff;margin-left:8px;";
+  }
   navigate(found.role==="admin"||found.role==="maestro" ? "admin" : "catalog");
 }
 
