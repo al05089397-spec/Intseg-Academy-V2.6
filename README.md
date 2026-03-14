@@ -100,5 +100,6 @@ code Intseg-Academy-V2.6
 ## Autor
 
 Claudia Elizabeth Escoto Meza
-Estudiante de Ingeniería de Software — Universidad TecMilenio  
+Estudiante de Universidad TecMilenio en P.A. Desarrollo de Software 
+Materia Ingeniería de Software Magister Erik Ezequiel Carrillo Moo  
 ID: al05089397
